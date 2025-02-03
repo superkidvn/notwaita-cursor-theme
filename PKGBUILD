@@ -1,4 +1,4 @@
-# Maintainer: Kiet Huynh <11086238+superkidvn@users.noreply.github.com>
+# Maintainer: Kiet "Shihotori" Huynh <11086238+superkidvn@users.noreply.github.com>
 
 pkgname=notwaita-cursor-theme-bin
 pkgver=1.0.0_alpha1
@@ -10,12 +10,17 @@ license=('LGPL-3.0-only')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(${pkgname}-${pkgver//_/-}.tar.xz::"${url}/releases/download/v${pkgver//_/-}/Notwaita.tar.xz"
-        LICENSE::"${url//github.com/raw.githubusercontent.com}/refs/heads/main/COPYING_LGPL")
+        COPYING_LGPL::"${url//github.com/raw.githubusercontent.com}/refs/heads/main/COPYING_LGPL")
 sha256sums=('93928d9c64e2aa61e061efcfbdbf67ae15c458095c6d82f5ad790a1402d46cf2'
             'da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/icons" "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp -r Notwaita-* "${pkgdir}/usr/share/icons"
-  cp -a LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  # Create directories
+  install -dm0755 "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/icons"
+
+  # Install cursor themes
+  cp -r "${srcdir}"/Notwaita-* "${pkgdir}/usr/share/icons"
+
+  # Install license
+  install -m0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/COPYING_LGPL"
 }
