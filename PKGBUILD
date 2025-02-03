@@ -20,6 +20,6 @@ prepare(){
 
 package() {
   mkdir -p "${pkgdir}/usr/share/icons" "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp -r Notwaita-* ${ICONS_DIR}
-  cp -a LICENSE ${LICENSES_DIR}
+  cp -r Notwaita-* "${pkgdir}/usr/share/icons"
+  cp -a LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
