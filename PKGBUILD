@@ -14,10 +14,6 @@ source=(${pkgname}-${pkgver//_/-}.tar.xz::"${url}/releases/download/v${pkgver//_
 sha256sums=('93928d9c64e2aa61e061efcfbdbf67ae15c458095c6d82f5ad790a1402d46cf2'
             'da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768')
 
-prepare(){
-  tar -xf "${pkgname}-${pkgver//_/-}.tar.xz"
-}
-
 package() {
   mkdir -p "${pkgdir}/usr/share/icons" "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -r Notwaita-* "${pkgdir}/usr/share/icons"
