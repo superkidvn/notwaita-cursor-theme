@@ -15,13 +15,11 @@ sha256sums=('93928d9c64e2aa61e061efcfbdbf67ae15c458095c6d82f5ad790a1402d46cf2'
 
 package() {
   # Create directories
-  install -d \
-    "${pkgdir}/usr/share/licenses/${pkgname}" \
-    "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/usr/share/icons"
 
   # Install cursor themes
   cp -r "${srcdir}"/Notwaita-* "${pkgdir}/usr/share/icons"
 
   # Install license
-  install -m0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/COPYING_LGPL"
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/COPYING_LGPL"
 }
