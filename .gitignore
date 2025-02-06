@@ -2,5 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!README
 !LICENSE
+!*.install
